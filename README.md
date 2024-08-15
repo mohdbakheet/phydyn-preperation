@@ -4,11 +4,11 @@ This README provides instructions on how to use the `phydynBEAST` package develo
 We consider the following model
 
 $$
-\frac{dS_C}{dt} = - \left( \beta_{CC} S_C \frac{I_C}{N_C} +  \beta_{TC} S_C \frac{I_T}{N_T}  + \beta_{HC}S_C\frac{  I_H}{N_H} \right)\\
+\frac{dS_k}{dt} = - \sum_{i=1}^3 \beta_{ik} S_C \frac{I_i}{N_i}
 $$
 
 $$
-\frac{dE_C}{dt} = \left( \frac{\beta_{CC} S_C I_C}{N_C} +  \frac{\beta_{TC} S_C I_T}{N_T}  + \frac{ \beta_{HC}S_C I_H}{N_H} \right) - \gamma_C E_C
+\frac{dE_k}{dt} = \left( \frac{\beta_{CC} S_C I_C}{N_C} +  \frac{\beta_{TC} S_C I_T}{N_T}  + \frac{ \beta_{HC}S_C I_H}{N_H} \right) - \gamma_C E_C
 $$
 
 ## Installation
