@@ -2,9 +2,13 @@
 
 This README provides instructions on how to use the `phydynBEAST` package developed by Erik Volz to generate BEAST2 XML files for a Susceptible-Infected-Recovered (SIR) compartmental model across multiple host species.
 We consider the following model
+
 $$
-\frac{dS_C}{dt} = -\beta_CC \frac{S_C I_C}{N_C} 
+\frac{dS_C}{dt} = - \left( \beta_CC \frac{S_C I_C}{N_C} + \beta_CC \frac{S_C I_C}{N_C}  + \beta_CC \frac{S_C I_C}{N_C} \right)
+\frac{dE_C}{dt} = \left( \beta_CC \frac{S_C I_C}{N_C} + \beta_CC \frac{S_C I_C}{N_C}  + \beta_CC \frac{S_C I_C}{N_C} \right) - \gamma_C E_C
+
 $$
+
 ## Installation
 
 ### 1. Install R
@@ -29,21 +33,42 @@ library(phydynBEAST)
 Create the compartmental model using epidemiological equations. Here is an example setup for a multi-host system:
 ```r
 eqns <- list(
-  confeqn('N_C = S_C + E_C + C + R_C', type='definition'),
+    confeqn('N_C = S_C + E_C + C + R_C', type='definition'),
   confeqn('N_T = S_T + E_T + T + R_T', type='definition'),
   confeqn('N_H = S_H + E_H + H + R_H', type='definition'),
-  
+ 
   # Infection dynamics within and between species
   confeqn('beta_CC * C / N_C', origin='C', type='birth', destination='E_C'),
-  confeqn('beta_CT * C / N_C', origin='C', type='birth', destination='E_T'),
-  confeqn('beta_CH * C / N_C', origin='C', type='birth', destination='E_H'),
+  confeqn('beta_TC * T / N_T', origin='T', type='birth', destination='E_T'),
+  confeqn('beta_HC * H / N_H', origin='H', type='birth', destination='E_H'),
+  
+  
+  confeqn('beta_CT * C / N_C', origin='C', type='birth', destination='E_db'),
+  confeqn('beta_TT * T / N_T', origin='T', type='birth', destination='E_db'),
+  confeqn('beta_HT * H / N_H', origin='H', type='birth', destination='E_db'),
+ 
+  confeqn('beta_CH * C / N_C', origin='C', type='birth', destination='E_wm'),
+  confeqn('beta_TH * T / N_T', origin='T', type='birth', destination='E_wm'),
+  confeqn('beta_HH * H / N_H', origin='H', type='birth', destination='E_wm'),
   
   # Recovery and mortality
-  confeqn('(gamma_C + mu_H) * C', origin='C', type='death'),
+  
+  confeqn('(gamma_C + mu_H) * C',  origin='C', type='death'),
+  confeqn('(gamma_T + mu_H) * T',  origin='T', type='death'),
+  confeqn('(gamma_H + mu_H) * H',  origin='H', type='death'),
+  
+  confeqn('eta_C * E_T', origin='E_C', type='migration', destination='C'),
+  confeqn('eta_T * E_T', origin='E_T', type='migration', destination='T'),
+  confeqn('eta_H * E_H', origin='E_H',  type='migration', destination='H'),
+  
   confeqn('gamma_C * C', origin='R_C', type='nondeme'),
+  confeqn('gamma_T * T', origin='R_T', type='nondeme'),
+  confeqn('gamma_H * H', origin='R_H',  type='nondeme' ),
   
   # Susceptibility
-  confeqn('-(beta_CC * C / N_C + beta_CT * C / N_C + beta_CH * C / N_C) * S_C', origin='S_C', type='nondeme')
+  confeqn('-(beta_CC * C / N_C + beta_TC * T / N_T + beta_HC * H / N_H) * S_C', origin='S_C', type='nondeme'),
+  confeqn('-(beta_CT * C / N_C + beta_TT * T / N_T + beta_HT * H / N_H) * S_T', origin='S_db', type='nondeme'),
+  confeqn('-(beta_CH * C / N_C + beta_TH * T / N_T + beta_HH * H / N_H) * S_H', origin='S_h', type='nondeme')
 )
 ```
 
