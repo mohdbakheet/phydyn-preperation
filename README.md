@@ -4,12 +4,12 @@ This README provides instructions on how to use the `phydynBEAST` package develo
 We consider the following model
 
 $$
-x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\frac{dS_C}{dt} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 
 
 $$
-\frac{dS_C}{dt} = - \left( \beta_CC \frac{S_C I_C}{N_C} + \beta_CC \frac{S_C I_C}{N_C}  + \beta_CC \frac{S_C I_C}{N_C} \right)
+ = - \left( \beta_CC \frac{S_C I_C}{N_C} + \beta_CC \frac{S_C I_C}{N_C}  + \beta_CC \frac{S_C I_C}{N_C} \right)
 \frac{dE_C}{dt} = \left( \beta_CC \frac{S_C I_C}{N_C} + \beta_CC \frac{S_C I_C}{N_C}  + \beta_CC \frac{S_C I_C}{N_C} \right) - \gamma_C E_C
 
 $$
