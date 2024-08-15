@@ -59,8 +59,7 @@ eqns <- list(
   confeqn('-(beta_CH * C / N_C + beta_TH * T / N_T + beta_HH * H / N_H) * S_H', origin='S_h', type='nondeme')
   
 )
-   params <- c("beta_wb", "gamma_wb", "beta_db", "gamma_db")
-
+```
    # Define prameters
   
 
