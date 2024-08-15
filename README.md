@@ -70,7 +70,9 @@ eqns <- list(
   confeqn('-(beta_CT * C / N_C + beta_TT * T / N_T + beta_HT * H / N_H) * S_T', origin='S_db', type='nondeme'),
   confeqn('-(beta_CH * C / N_C + beta_TH * T / N_T + beta_HH * H / N_H) * S_H', origin='S_h', type='nondeme')
 )
+```
 
+```r
 parms <- list(
   confparm('beta_TC',
            initial = 3,
@@ -352,7 +354,8 @@ parms <- list(
            mean = 10
   )
 )
-
+```
+```r
 model <- config_phydyn(
   system.file('extdata', 'ba.2.86_algnWu-Hu-1.1_qc0_beast_template.xml', package = 'phydynbeast'),
   saveto = 'yor_output.xml',
