@@ -12,11 +12,11 @@ $$
 $$
 
 $$
-\frac{dI_k}{dt} =  \eta_k E_k - \left( \mu_k + gamma_k \right) I_k
+\frac{dI_k}{dt} =  \eta_k E_k - \left( \mu_k + \gamma_k \right) I_k
 $$
 
 $$
-\frac{dR_k}{dt} =  gamma_k I_k
+\frac{dR_k}{dt} =  \gamma_k I_k
 $$
 
 ## Installation
