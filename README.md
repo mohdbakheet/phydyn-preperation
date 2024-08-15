@@ -1,7 +1,10 @@
 # Using phydynBEAST for Multi-Host SIR Models
 
 This README provides instructions on how to use the `phydynBEAST` package developed by Erik Volz to generate BEAST2 XML files for a Susceptible-Infected-Recovered (SIR) compartmental model across multiple host species.
-
+We consider the following model
+$$
+\frac{dS_C}{dt} = -\beta_CC \frac{S_C I_C}{N_C} 
+$$
 ## Installation
 
 ### 1. Install R
@@ -14,7 +17,7 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github('emvolz/phydynbeast')
 ```
 
-## Setting Up Your Model
+## Setting Up The Model
 
 ### 1. Load the Package
 Load `phydynBEAST` into your R session:
