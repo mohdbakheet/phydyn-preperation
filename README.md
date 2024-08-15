@@ -22,8 +22,8 @@ This README provides instructions on how to use the `phydynBEAST` package develo
 
 4. **Define the multi-host SIR model:**
    ```R
-  # Define the states for the SIR model
-   eqns <- list( 
+   # Define the states for the SIR model
+eqns <- list( 
   confeqn('N_C = S_C + E_C + C + R_C', type='definition'),
   confeqn('N_T = S_T + E_T + T + R_T', type='definition'),
   confeqn('N_H = S_H + E_H + H + R_H', type='definition'),
