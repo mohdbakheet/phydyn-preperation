@@ -27,6 +27,10 @@ $$
 | \( \gamma_X \)    | Infection period for species \(X\)                    | days     |
 | \( \mu_X \)       | Disease related death rate for species \(X\)          |  days    |
 
+## Data Preparation
+* Download sequence data
+* Align sequence data
+
 ## Installation
 
 ### 1. Install R
