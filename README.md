@@ -27,17 +27,13 @@ $$
 | \( \gamma_X \)    | Infection period for species \(X\)                    | days     |
 | \( \mu_X \)       | Disease related death rate for species \(X\)          |  days    |
 
-## Data Preparation
-* Download sequence data
-* Align sequence data
-
 ## Installation
 
 ### 1. Install R
 Ensure that R is installed on your computer. You can download it from [CRAN](https://cran.r-project.org).
 
 ### 2. Install phydynBEAST
-Install the `phydynBEAST` package using `devtools`:
+Install the `phydynbeast` package using `devtools`:
 ```R
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github('emvolz/phydynbeast')
@@ -46,9 +42,9 @@ devtools::install_github('emvolz/phydynbeast')
 ## Setting Up The Model
 
 ### 1. Load the Package
-Load `phydynBEAST` into your R session:
+Load `phydynbeast` into your R session:
 ```R
-library(phydynBEAST)
+library(phydynbeast)
 ```
 
 ### 2. Define the Multi-Host SIR Model
@@ -93,7 +89,7 @@ eqns <- list(
   confeqn('-(beta_CH * C / N_C + beta_TH * T / N_T + beta_HH * H / N_H) * S_H', origin='S_h', type='nondeme')
 )
 ```
-
+For the parameters and Initial values make sure thta they are specified correctly. For our model we choose the following
 ```r
 parms <- list(
   confparm('beta_TC',
@@ -377,6 +373,7 @@ parms <- list(
   )
 )
 ```
+Note that, the XML file 'ba.2.86_algnWu-Hu-1.1_qc0_beast_template.xml' is located in the installed phydynbeast directory.
 ```r
 model <- config_phydyn(
   system.file('extdata', 'ba.2.86_algnWu-Hu-1.1_qc0_beast_template.xml', package = 'phydynbeast'),
