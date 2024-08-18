@@ -89,7 +89,9 @@ eqns <- list(
   confeqn('-(beta_CH * C / N_C + beta_TH * T / N_T + beta_HH * H / N_H) * S_H', origin='S_h', type='nondeme')
 )
 ```
-For the parameters and Initial values make sure thta they are specified correctly. For our model we choose the following
+### 3. Set Initial Conditions and Parameters
+
+Define the parametrs and initial conditions for each compartment and the parameter values.
 ```r
 parms <- list(
   confparm('beta_TC',
@@ -373,6 +375,12 @@ parms <- list(
   )
 )
 ```
+
+## Generating the BEAST2 XML File
+
+###  Generate XML
+Generate the XML configuration for the BEAST2 analysis:
+
 Note that, the XML file 'ba.2.86_algnWu-Hu-1.1_qc0_beast_template.xml' is located in the installed phydynbeast directory.
 ```r
 model <- config_phydyn(
@@ -391,30 +399,6 @@ model <- config_phydyn(
   traj_log_frequency = 10000
 )
 
-```
-
-### 3. Set Initial Conditions and Parameters
-Define the initial conditions for each compartment and the parameter values:
-```R
-# Initial conditions
-#init_conditions <- c(S_C = 1000, I_C = 10, R_C = 0)
-
-# Parameters
-#param_values <- c(beta_CC = 0.1, gamma_C = 0.05)
-```
-
-## Generating the BEAST2 XML File
-
-### 1. Generate XML
-Generate the XML configuration for the BEAST2 analysis:
-```R
-#xml <- generateXML(eqns, init_conditions, param_values, endTime = 50)
-```
-
-### 2. Save the XML to a File
-Save the generated XML to a file for use with BEAST2:
-```R
-#write(xml, file = "SIR_MultiHost.xml")
 ```
 
 ## Running the Analysis
