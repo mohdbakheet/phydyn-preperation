@@ -22,7 +22,7 @@ $$
 | Parameter     | Description                                         | Range    |
 |---------------|-----------------------------------------------------|----------|
 |$$\beta_{X,Y}$$ | Transmission rate from species $$X$$ to species $$Y$$  |days      |
-| $$N_X$$         | Total population of species $$X$$                     |  days    |
+| $$N_X$$         | Total population of species $$X$$                     |      |
 | $$\eta_X$$      | Incubation period for species $$X$$                   | days     |
 | $$\gamma_X$$    | Infection period for species $$X$$                    | days     |
 | $$\mu_X$$       | Disease related death rate for species $$X$$          |  days    |
