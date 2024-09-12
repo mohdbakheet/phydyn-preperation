@@ -90,7 +90,7 @@ eqns <- list(
 ```
 ### 3. Set Initial Conditions and Parameters
 
-Define the parametrs and initial conditions for each compartment and the parameter values.
+Define the parametrs and initial conditions for each compartment and the parameter values. Here we assume that all model's parameters to be estimated
 ```r
 parms <- list(
   confparm('beta_TC',
